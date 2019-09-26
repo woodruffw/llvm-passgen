@@ -11,5 +11,5 @@ matrix:
 before_install:
   - sudo apt-get install -y llvm-dev
 script:
-  - cargo install --path test/
+  - cargo install --path .
   - bash test/test_llvm_passes.sh

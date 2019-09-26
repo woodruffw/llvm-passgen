@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
-[[ -f ./llvm-passgen ]] || { >&2 echo "Missing llvm-passgen binary"; exit 1; }
-
 kinds=(module function block)
 
 for kind in "${kinds[@]}"; do
   dir=$(mktemp -d)
-  ./llvm-passgen --dest "${dir}" --kind "${kind}" Test
+  llvm-passgen --dest "${dir}" --kind "${kind}" Test
   cd "${dir}/Test/build" || { >&2 echo "Couldn't cd to pass build dir: ${dir}/build"; exit 1; }
   cmake ..
   make
