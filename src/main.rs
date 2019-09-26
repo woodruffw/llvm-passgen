@@ -72,7 +72,6 @@ fn run() -> Result<(), Error> {
                 .short("k")
                 .long("kind")
                 .multiple(false)
-                // TODO(ww): Other passes: immutable, callgraph, loop, region
                 .possible_values(&["module", "function", "block"])
                 .default_value("function"),
         )
