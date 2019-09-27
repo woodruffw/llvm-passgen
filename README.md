@@ -16,7 +16,7 @@ cargo install llvm-passgen
 
 ```bash
 llvm-passgen --kind module Foo
-cd Foo/Build
+cd Foo/build
 cmake ..
 make
 ```
