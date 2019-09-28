@@ -6,7 +6,7 @@ LLVM_DIR=$(find /usr -name AddLLVM.cmake -printf '%h\n' -quit)
 [[ -d "${LLVM_DIR}" ]] || { >&2 echo "Couldn't infer LLVM_DIR"; exit 1; }
 export LLVM_DIR
 
-kinds=(module function block)
+kinds=(module function block loop)
 
 for kind in "${kinds[@]}"; do
   dir=$(mktemp -d)
