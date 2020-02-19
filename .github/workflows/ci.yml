@@ -20,5 +20,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Deps
+      run: |
+        sudo apt update
+        sudo apt install -y llvm-dev
     - name: Build
       run: cargo build
+    - name: Test
+      run: |
+        cargo install --force --path .
+        bash test/test_llvm_passes.sh
