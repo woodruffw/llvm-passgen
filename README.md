@@ -1,7 +1,7 @@
 llvm-passgen
 ============
 
-[![Build Status](https://travis-ci.com/woodruffw/llvm-passgen.svg?branch=master)](https://travis-ci.com/woodruffw/llvm-passgen)
+[![Build Status](https://img.shields.io/github/workflow/status/woodruffw/llvm-passgen/CI/master)](https://github.com/woodruffw/llvm-passgen/actions?query=workflow%3ACI)
 
 A tool for rapidly creating LLVM pass skeletons.
 
