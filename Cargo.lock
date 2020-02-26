@@ -120,7 +120,7 @@ version = "0.2.0"
 dependencies = [
  "clap 2.33.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "handlebars 3.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "rust-embed 5.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rust-embed 5.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.104 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -204,7 +204,7 @@ dependencies = [
 
 [[package]]
 name = "rust-embed"
-version = "5.4.0"
+version = "5.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "rust-embed-impl 5.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -394,7 +394,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum proc-macro2 1.0.4 (registry+https://github.com/rust-lang/crates.io-index)" = "afdc77cc74ec70ed262262942ebb7dac3d479e9e5cfa2da1841c0806f6cdabcc"
 "checksum quick-error 1.2.3 (registry+https://github.com/rust-lang/crates.io-index)" = "a1d01941d82fa2ab50be1e79e6714289dd7cde78eba4c074bc5a4374f650dfe0"
 "checksum quote 1.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "053a8c8bcc71fcce321828dc897a98ab9760bef03a4fc36693c231e5b3216cfe"
-"checksum rust-embed 5.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "dff13d22999a1abbc48b204f61a5a3e2c54d1c30b424ffbecb8d6666c08eea74"
+"checksum rust-embed 5.5.0 (registry+https://github.com/rust-lang/crates.io-index)" = "20eb43fdf7722a83abfcbc60e10a99c0940d3f07ca69a643edee10bf174240ff"
 "checksum rust-embed-impl 5.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b3823d139146a58c43461fdab8a8fad0766a2dc98acad5239070671711619702"
 "checksum rust-embed-utils 5.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "97655158074ccb2d2cfb1ccb4c956ef0f4054e43a2c1e71146d4991e6961e105"
 "checksum ryu 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c92464b447c0ee8c4fb3824ecc8383b81717b9f1e74ba2e72540aef7b9f82997"
