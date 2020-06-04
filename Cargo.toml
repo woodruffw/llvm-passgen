@@ -7,6 +7,9 @@ description = "A tool for quickly creating LLVM pass skeletons"
 license-file = "LICENSE"
 homepage = "https://github.com/woodruffw/llvm-passgen"
 
+[package.metadata.release]
+no-dev-version = true
+
 [badges]
 travis-ci = { repository = "woodruffw/llvm-passgen", branch = "master" }
 maintenance = { status = "experimental" }
