@@ -6,6 +6,10 @@ LLVM_DIR=$(find /usr -name AddLLVM.cmake -printf '%h\n' -quit)
 [[ -d "${LLVM_DIR}" ]] || { >&2 echo "Couldn't infer LLVM_DIR"; exit 1; }
 export LLVM_DIR
 
+llvm-passgen() {
+  cargo run --bin llvm-passgen -- "${@}"
+}
+
 kinds=(module function loop)
 
 for kind in "${kinds[@]}"; do
