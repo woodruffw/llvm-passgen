@@ -30,5 +30,4 @@ jobs:
       run: cargo build
     - name: Test
       run: |
-        cargo install --force --path .
         bash test/test_llvm_passes.sh
