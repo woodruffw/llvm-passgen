@@ -3,10 +3,6 @@ extern crate handlebars;
 #[macro_use]
 extern crate rust_embed;
 
-use clap::{App, Arg};
-use handlebars::Handlebars;
-use serde::Serialize;
-
 use std::env;
 use std::format;
 use std::fs;
@@ -15,6 +11,10 @@ use std::io::prelude::*;
 use std::io::{Error, ErrorKind};
 use std::path::Path;
 use std::process;
+
+use clap::{Arg, Command};
+use handlebars::Handlebars;
+use serde::Serialize;
 
 #[derive(Serialize)]
 struct Context {
@@ -30,7 +30,7 @@ struct Templates;
 fn template(name: &str) -> String {
     let file_bytes = Templates::get(name).unwrap();
 
-    String::from_utf8(file_bytes.to_vec()).unwrap()
+    String::from_utf8(file_bytes.data.to_vec()).unwrap()
 }
 
 fn build_pass(ctx: &Context) -> Result<(), Error> {
@@ -63,28 +63,28 @@ fn run() -> Result<(), Error> {
         .to_str()
         .ok_or(Error::new(ErrorKind::Other, ""))?;
 
-    let matches = App::new(env!("CARGO_PKG_NAME"))
+    let matches = Command::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(
-            Arg::with_name("kind")
+            Arg::new("kind")
                 .help("sets the pass kind")
-                .short("k")
+                .short('k')
                 .long("kind")
-                .multiple(false)
+                .multiple_occurrences(false)
                 .possible_values(&["module", "function", "block", "loop"])
                 .default_value("function"),
         )
         .arg(
-            Arg::with_name("dest")
+            Arg::new("dest")
                 .help("sets the output directory")
-                .short("d")
+                .short('d')
                 .long("dest")
-                .multiple(false)
+                .multiple_occurrences(false)
                 .default_value(current_dir_str),
         )
         .arg(
-            Arg::with_name("name")
+            Arg::new("name")
                 .help("the name of the pass")
                 .index(1)
                 .required(true),
