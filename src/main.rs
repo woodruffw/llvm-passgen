@@ -72,7 +72,7 @@ fn run() -> Result<(), Error> {
                 .short('k')
                 .long("kind")
                 .multiple_occurrences(false)
-                .possible_values(&["module", "function", "block", "loop"])
+                .possible_values(&["module", "function", "loop"])
                 .default_value("function"),
         )
         .arg(
