@@ -41,7 +41,7 @@ fn build_pass(ctx: &Context) -> Result<(), Error> {
     fs::create_dir(&pass_path.join("build"))?;
 
     File::create(pass_path.join(".clang-format"))
-        .and_then(|mut file| file.write_all(&template("common/.clang-format").as_bytes()))?;
+        .and_then(|mut file| file.write_all(template("common/.clang-format").as_bytes()))?;
 
     let cmakelists = reg
         .render_template(&template("common/CMakeLists.txt"), ctx)
