@@ -8,7 +8,7 @@ license-file = "LICENSE"
 homepage = "https://github.com/woodruffw/llvm-passgen"
 
 [package.metadata.release]
-no-dev-version = true
+dev-version = false
 
 [badges]
 travis-ci = { repository = "woodruffw/llvm-passgen", branch = "master" }
