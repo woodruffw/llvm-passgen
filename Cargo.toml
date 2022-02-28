@@ -1,6 +1,6 @@
 [package]
 name = "llvm-passgen"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["William Woodruff <william@yossarian.net>"]
 edition = "2018"
 description = "A tool for quickly creating LLVM pass skeletons"
