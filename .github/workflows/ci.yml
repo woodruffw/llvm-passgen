@@ -19,13 +19,17 @@ jobs:
           rustup component add clippy
           cargo clippy
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
     - name: Deps
       run: |
         sudo apt update
         sudo apt install -y llvm-dev
+      if: matrix.os == 'ubuntu-latest'
     - name: Build
       run: cargo build
     - name: Test
