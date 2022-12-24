@@ -22,7 +22,7 @@ use serde::Serialize;
 struct Context {
     pass_name: String,
     pass_kind: String,
-    dest_dir: String,
+    dest_dir: PathBuf,
 }
 
 #[derive(RustEmbed)]
@@ -93,7 +93,7 @@ fn run() -> Result<(), Error> {
     let ctx = Context {
         pass_name: matches.get_one::<String>("name").unwrap().to_string(),
         pass_kind: matches.get_one::<String>("kind").unwrap().to_string(),
-        dest_dir: matches.get_one::<String>("dest").unwrap().to_string(),
+        dest_dir: matches.get_one::<PathBuf>("dest").unwrap().to_path_buf(),
     };
 
     build_pass(&ctx)?;

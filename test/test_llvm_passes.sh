@@ -3,7 +3,7 @@
 set -eo pipefail
 
 if [[ "$(uname)" = "Darwin" ]]; then
-  LLVM_DIR=$(find /usr/local/Cellar/llvm -name AddLLVM.cmake -print0 -quit | xargs -0 dirname)
+  LLVM_DIR=$(find $(brew --prefix)/Cellar/llvm -name AddLLVM.cmake -print0 -quit | xargs -0 dirname)
 else
   LLVM_DIR=$(find /usr -name AddLLVM.cmake -printf '%h\n' -quit)
 fi
