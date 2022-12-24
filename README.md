@@ -2,7 +2,7 @@ llvm-passgen
 ============
 
 ![license](https://raster.shields.io/badge/license-MIT%20with%20restrictions-green.png)
-[![Build Status](https://img.shields.io/github/workflow/status/woodruffw/llvm-passgen/CI/master)](https://github.com/woodruffw/llvm-passgen/actions?query=workflow%3ACI)
+[![CI](https://github.com/woodruffw/llvm-passgen/actions/workflows/ci.yml/badge.svg)](https://github.com/woodruffw/llvm-passgen/actions/workflows/ci.yml)
 
 A tool for rapidly creating LLVM pass skeletons.
 
