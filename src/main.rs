@@ -8,10 +8,12 @@ use std::format;
 use std::fs;
 use std::fs::File;
 use std::io::prelude::*;
-use std::io::{Error, ErrorKind};
+use std::io::Error;
 use std::path::Path;
+use std::path::PathBuf;
 use std::process;
 
+use clap::value_parser;
 use clap::{Arg, Command};
 use handlebars::Handlebars;
 use serde::Serialize;
@@ -57,13 +59,8 @@ fn build_pass(ctx: &Context) -> Result<(), Error> {
     Ok(())
 }
 
-fn run() -> Result<(), Error> {
-    let current_dir = env::current_dir()?;
-    let current_dir_str = current_dir
-        .to_str()
-        .ok_or(Error::new(ErrorKind::Other, ""))?;
-
-    let matches = Command::new(env!("CARGO_PKG_NAME"))
+fn app() -> Command {
+    Command::new(env!("CARGO_PKG_NAME"))
         .version(env!("CARGO_PKG_VERSION"))
         .about(env!("CARGO_PKG_DESCRIPTION"))
         .arg(
@@ -71,8 +68,7 @@ fn run() -> Result<(), Error> {
                 .help("sets the pass kind")
                 .short('k')
                 .long("kind")
-                .multiple_occurrences(false)
-                .possible_values(&["module", "function", "loop"])
+                .value_parser(["module", "function", "loop"])
                 .default_value("function"),
         )
         .arg(
@@ -80,8 +76,8 @@ fn run() -> Result<(), Error> {
                 .help("sets the output directory")
                 .short('d')
                 .long("dest")
-                .multiple_occurrences(false)
-                .default_value(current_dir_str),
+                .value_parser(value_parser!(PathBuf))
+                .required(true),
         )
         .arg(
             Arg::new("name")
@@ -89,12 +85,15 @@ fn run() -> Result<(), Error> {
                 .index(1)
                 .required(true),
         )
-        .get_matches();
+}
+
+fn run() -> Result<(), Error> {
+    let matches = app().get_matches();
 
     let ctx = Context {
-        pass_name: matches.value_of("name").unwrap().to_string(),
-        pass_kind: matches.value_of("kind").unwrap().to_string(),
-        dest_dir: matches.value_of("dest").unwrap().to_string(),
+        pass_name: matches.get_one::<String>("name").unwrap().to_string(),
+        pass_kind: matches.get_one::<String>("kind").unwrap().to_string(),
+        dest_dir: matches.get_one::<String>("dest").unwrap().to_string(),
     };
 
     build_pass(&ctx)?;
@@ -111,4 +110,14 @@ fn main() {
             1
         }
     });
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_app() {
+        app().debug_assert()
+    }
 }
