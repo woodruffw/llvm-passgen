@@ -17,5 +17,5 @@ maintenance = { status = "experimental" }
 [dependencies]
 clap = "4"
 handlebars = "4.3"
-rust-embed = "6.4"
+rust-embed = "6.6"
 serde = { version = "~1.0", features = ["derive"] }
